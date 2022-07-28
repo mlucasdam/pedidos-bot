@@ -12,5 +12,8 @@
     "dialogflow"
   ],
   "author": "Lucas Damiani (damiani.lucasm@gmail.com)",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.1"
+  }
 }
