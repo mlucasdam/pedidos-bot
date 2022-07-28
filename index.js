@@ -23,8 +23,20 @@ app.get('/mensagem/:tipo/:id', (req, res) =>{
 
 app.post('/pedido', (req,res) => {
     console.log(req.body)
-    res.send("pedido recebido")
+    const produto = req.body.produto
+    const qtd = req.body.quantidade
+    const pgto = req.body.pagamento
+    const bebida = req.body.bebida
+    
+    
+    const pedido = {
+        produto,
+        qtd,
+        pgto,
+        bebida
+    }
 
+    res.json(pedido)
 })
 
 app.listen(3000, '127.0.0.1', () => {
