@@ -6,7 +6,7 @@ app.use(bodyParser.urlencoded({extended: true}));
 
 
 app.get('/', (req, res) => {
-    res.send("Olá Mundo");
+    res.send("Olá chatbot");
 })
 
 app.get('/pergunta', (req,res) => {
@@ -39,8 +39,12 @@ app.post('/pedido', (req,res) => {
     res.json(pedido)
 })
 
-app.listen(3000, '127.0.0.1', () => {
-    console.log("Servidor Rodando");
+
+const door = process.env.PORT || 3000;
+const hostName = "127.0.0.1"
+
+app.listen(door, hostName, () => {
+    console.log(`servidor rodando em http://${hostName}:${door}`);
 })
 
 
