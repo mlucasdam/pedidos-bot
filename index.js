@@ -40,10 +40,10 @@ app.post('/pedido', (req,res) => {
 })
 
 
-const door = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3000;
 const hostName = "127.0.0.1"
 
-app.listen(door, '127.0.0.1' , () => {
+app.listen(PORT, () => {
     console.log(`servidor rodando em http://${hostName}:${door}`);
 })
 
