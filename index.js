@@ -33,7 +33,7 @@ app.post('/webhook', (req, res) => {
             {
                 "text":{
                     "text": [
-                        "Eu sou um webhook"
+                        responder
                     ],
                 }
             }
