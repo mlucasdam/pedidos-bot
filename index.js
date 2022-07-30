@@ -17,7 +17,7 @@ app.post('/webhook', (req, res) => {
     const intencao = req.body.queryResult.intent.displayName;
 
     if(req.body.queryResult.parameters && req.body.queryResult.parameters.naoVendemos){
-        const responder = "Puxa nós não vendemos" + req.body.queryResult.parameters.naoVendemos
+        const responder = "Puxa nós não vendemos " + req.body.queryResult.parameters.naoVendemos
         console.log("Responder", responder)
     }
 
@@ -28,9 +28,11 @@ app.post('/webhook', (req, res) => {
         "fulfilmentText": "Resposta do webhook",
         "fulfilmentMessages": [
             {
-                "text": [
-                    "Eu sou um webhook"
-                ],
+                "text":{
+                    "text": [
+                        "Eu sou um webhook"
+                    ],
+                }
             }
         ],
         "source": "exemple.com"  
