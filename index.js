@@ -15,11 +15,14 @@ app.post('/webhook', (req, res) => {
 
     const mensagem = req.body.queryResult.queryText;
     const intencao = req.body.queryResult.intent.displayName;
+    let responder = " "
 
     if(req.body.queryResult.parameters && req.body.queryResult.parameters.naoVendemos){
-        const responder = "Puxa nós não vendemos " + req.body.queryResult.parameters.naoVendemos
+        const responder = "Puxa nós não vendemos " + req.body.queryResult.parameters.naoVendemos + " "
         console.log("Responder", responder)
     }
+
+    responder = responder + "nosso cardapio ainda esta sendo elaborado, mas vendemos pizza e refrigerante"
 
     console.log("Mensagem Original:", mensagem)
     console.log("Intenção:", intencao)
