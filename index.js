@@ -19,7 +19,7 @@ app.post('/webhook', (req, res) => {
 
     switch (intencao){
         case 'vercardapio':
-            resposta = Model.vercardapio(mensagem, parameters);
+            resposta = Model.verCardapio(mensagem, parameters);
             break;
         default:
             resposta = {tipo: 'texto', mensagem: "sinto muito, não entendi o que quer dizer."}
@@ -32,7 +32,7 @@ app.post('/webhook', (req, res) => {
                 {
                     "text":{
                         "text": [
-                            resp.mensagem
+                            resposta.mensagem
                         ],
                     }
                 }
