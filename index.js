@@ -14,7 +14,7 @@ app.get('/', (req, res) => {
 app.post('/webhook', (req, res) => {
     const mensagem = req.body.queryResult.queryText;
     const intencao = req.body.queryResult.intent.displayName;
-    let parameters = req.body.queryResult.parameters;
+    const parameters = req.body.queryResult.parameters;
     let responder = " "
 
     switch (intencao){
