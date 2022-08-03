@@ -26,7 +26,10 @@ app.post('/webhook', (req, res) => {
         responder = responder + "nosso cardapio ainda esta sendo elaborado, mas vendemos pizza e refrigerante"
     }
     else if (intencao == "verStatus"){
-        "Seu pedido ainda está sendo preparado, por favor aguarde um instante"
+        responder = "Seu pedido ainda está sendo preparado, por favor aguarde um instante"
+    }
+    else {
+        responder =  "sua inteção é " + intencao 
     }
 
     
