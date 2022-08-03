@@ -18,7 +18,7 @@ app.post('/webhook', (req, res) => {
     let responder = " "
 
     if(req.body.queryResult.parameters && req.body.queryResult.parameters.naoVendemos){
-        const responder = "Puxa nós não vendemos " + req.body.queryResult.parameters.naoVendemos + " "
+        responder = "Puxa nós não vendemos " + req.body.queryResult.parameters.naoVendemos + ". "
         console.log("Responder", responder)
     }
 
