@@ -14,20 +14,15 @@ app.get('/', (req, res) => {
 app.post('/webhook', (req, res) => {
     const mensagem = req.body.queryResult.queryText;
     const intencao = req.body.queryResult.intent.displayName;
-    let params = null;
+    let parameters = req.body.queryResult.parameters;
     let responder = " "
-
-    if(req.body.queryResult.parameters && req.body.queryResult.parameters.naoVendemos){
-        responder = "Puxa nós não vendemos " + req.body.queryResult.parameters.naoVendemos + ". "
-        console.log("Responder", responder)
-    }
 
     switch (intencao){
         case 'vercardapio':
-            resposta = Model.vercardapio(mensagem, parametros);
+            resp = Model.vercardapio(mensagem, parameters);
             break;
         default:
-            resposta = {tipo: 'texto', mensagem: "sinto muito, não entendi o que quer dizer."}
+            resp = {tipo: 'texto', mensagem: "sinto muito, não entendi o que quer dizer."}
     } 
     
     if (resp.tipo == 'texto'){
