@@ -1,4 +1,4 @@
-exports.verCardapio = (msg, params) => {
+exports.VerCardapio = (msg, params) => {
     let resposta = {
         tipo: 'texto',
         mensagem: ' olá de dentro da model'

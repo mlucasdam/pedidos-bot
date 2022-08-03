@@ -18,8 +18,8 @@ app.post('/webhook', (req, res) => {
     let responder = " "
 
     switch (intencao){
-        case 'verCardapio':
-            resposta = Model.verCardapio(mensagem, parameters);
+        case 'VerCardapio':
+            resposta = Model.VerCardapio(mensagem, parameters);
             break;
         default:
             resposta = {tipo: 'texto', mensagem: "sinto muito, não entendi o que quer dizer."}
