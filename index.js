@@ -1,5 +1,6 @@
 const express = require("express")
 const bodyParser = require ("body-parser");
+const Model = require("../model")
 
 const app = express ();
 app.use(bodyParser.urlencoded({extended: false}));
@@ -11,10 +12,9 @@ app.get('/', (req, res) => {
 })
 
 app.post('/webhook', (req, res) => {
-    console.log("Cheguei no webhook")
-
     const mensagem = req.body.queryResult.queryText;
     const intencao = req.body.queryResult.intent.displayName;
+    let params = null;
     let responder = " "
 
     if(req.body.queryResult.parameters && req.body.queryResult.parameters.naoVendemos){
@@ -22,34 +22,30 @@ app.post('/webhook', (req, res) => {
         console.log("Responder", responder)
     }
 
-    if (intencao == "vercardapio"){
-        responder = responder + "nosso cardapio ainda esta sendo elaborado, mas vendemos pizza e refrigerante"
-    }
-    else if (intencao == "verStatus"){
-        responder = "Seu pedido ainda está sendo preparado, por favor aguarde um instante"
-    }
-    else {
-        responder =  "sua inteção é " + intencao 
-    }
-
+    switch (intencao){
+        case 'vercardapio':
+            resposta = Model.vercardapio(mensagem, parametros);
+            break;
+        default:
+            resposta = {tipo: 'texto', mensagem: "sinto muito, não entendi o que quer dizer."}
+    } 
     
-
-    console.log("Mensagem Original:", mensagem)
-    console.log("Intenção:", intencao)
-
-    const reply = {
-        "fulfillmentText": "Resposta do webhook",
-        "fulfillmentMessages": [
-            {
-                "text":{
-                    "text": [
-                        responder
-                    ],
+    if (resp.tipo == 'texto'){
+        const reply = {
+            "fulfillmentText": "Resposta do webhook",
+            "fulfillmentMessages": [
+                {
+                    "text":{
+                        "text": [
+                            resp.mensagem
+                        ],
+                    }
                 }
-            }
-        ],
-        "source": "",  
+            ],
+            "source": "",  
+        }
     }
+
 
 
     res.send(reply)
