@@ -19,14 +19,14 @@ app.post('/webhook', (req, res) => {
 
     switch (intencao){
         case 'vercardapio':
-            resp = Model.vercardapio(mensagem, parameters);
+            resposta = Model.vercardapio(mensagem, parameters);
             break;
         default:
-            resp = {tipo: 'texto', mensagem: "sinto muito, não entendi o que quer dizer."}
+            resposta = {tipo: 'texto', mensagem: "sinto muito, não entendi o que quer dizer."}
     } 
     
     if (resp.tipo == 'texto'){
-        const reply = {
+        responder = {
             "fulfillmentText": "Resposta do webhook",
             "fulfillmentMessages": [
                 {
