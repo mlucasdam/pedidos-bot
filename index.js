@@ -49,7 +49,7 @@ app.post('/webhook', (req, res) => {
             // "fulfillmentMessages": 
             "plataform": "ACTIONS_ON_GOOGLE",
             "image":{
-                "imageUrl": resposta.url,
+                "imageUri": resposta.url,
             }
         }
 
