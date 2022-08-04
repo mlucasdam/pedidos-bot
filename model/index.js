@@ -9,6 +9,7 @@ exports.VerCardapio = async (msg, params) => {
             .then ((resultado) => {
                 console.log (resultado.data[0]);
                 produto = resultado.data[0];
+                
                 let resposta = {
                     tipo: 'imagem',
                     url: produto.Imagem
