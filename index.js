@@ -11,7 +11,7 @@ app.get('/', (req, res) => {
     res.send("Olá chatbot");
 })
 
-app.post('/webhook', (req, res) => {
+app.post('/webhook', async (req, res) => {
     const mensagem = req.body.queryResult.queryText;
     const intencao = req.body.queryResult.intent.displayName;
     const parameters = req.body.queryResult.parameters;
@@ -19,7 +19,7 @@ app.post('/webhook', (req, res) => {
 
     switch (intencao){
         case 'VerCardapio':
-            resposta = Model.VerCardapio(mensagem, parameters);
+            resposta = await Model.VerCardapio(mensagem, parameters);
             break;
         case 'verStatus':
             resposta = Model.verStatus(mensagem, parameters);
