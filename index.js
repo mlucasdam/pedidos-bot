@@ -43,7 +43,7 @@ app.post('/webhook', (req, res) => {
             "source": "",  
         }
     }
-    else (resposta.tipo == 'imagem'){
+    else if (resposta.tipo == 'imagem'){
         responder = {
             // "fulfillmentText": "Resposta do webhook",
             // "fulfillmentMessages": 
@@ -52,7 +52,6 @@ app.post('/webhook', (req, res) => {
                 "imageUri": resposta.url,
             }
         }
-
     }
 
 
