@@ -21,6 +21,9 @@ app.post('/webhook', (req, res) => {
         case 'VerCardapio':
             resposta = Model.VerCardapio(mensagem, parameters);
             break;
+        case 'verStatus':
+            resposta = Model.verStatus(mensagem, parameters);
+            break;
         default:
             resposta = {tipo: 'texto', mensagem: "sinto muito, não entendi o que quer dizer."}
     } 
@@ -39,6 +42,17 @@ app.post('/webhook', (req, res) => {
             ],
             "source": "",  
         }
+    }
+    else (resposta.tipo == 'imagem'){
+        responder = {
+            // "fulfillmentText": "Resposta do webhook",
+            // "fulfillmentMessages": 
+            "plataform": "ACTIONS_ON_GOOGLE",
+            "image":{
+                "imageUri": resposta.url,
+            }
+        }
+
     }
 
 
