@@ -45,12 +45,15 @@ app.post('/webhook', (req, res) => {
     }
     else if (resposta.tipo == 'imagem'){
         responder = {
-            // "fulfillmentText": "Resposta do webhook",
-            // "fulfillmentMessages": 
-            "plataform": "ACTIONS_ON_GOOGLE",
-            "image":{
-                "imageUri": resposta.url,
-            }
+            "fulfillmentText": "Resposta do webhook",
+            "fulfillmentMessages":[
+                {
+                    "image":{
+                        "imageUri": resposta.url,
+                    }
+                }
+            ],
+            "source": "",
         }
     }
 
