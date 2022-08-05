@@ -11,7 +11,7 @@ exports.VerCardapio = async (msg, params) => {
                 produto = resultado.data[0];
                 
                 let resposta = {
-                    tipo: 'imagem',
+                    tipo: 'card',
                     url: produto.Imagem
                 }
                 return resposta
