@@ -62,15 +62,9 @@ app.post('/webhook', async (req, res) => {
             "fulfillmentMessages":[
                 {
                     "card":{
-                        "title": "Barata",
-                        "subtitle": "Barata?",
+                        "title": resposta.titulo,
+                        "subtitle": resposta.preco,
                         "imageUri": resposta.url,
-                        "buttons": [
-                            {
-                                "Text": "Barata!!!!",
-                                "postback": "google.com"
-                            }
-                        ]
                     }
                 }
             ],
