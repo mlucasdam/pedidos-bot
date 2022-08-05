@@ -13,7 +13,7 @@ exports.VerCardapio = async (msg, params) => {
                 let resposta = {
                     tipo: 'card',
                     titulo: `cod: ${produto.codigo} - ${produto.nome}`,
-                    preco: `R$ ${produto.preco}`,
+                    preco: `R$ ${produto.preco},00`,
                     url: produto.Imagem
                 }
                 return resposta
