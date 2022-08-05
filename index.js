@@ -56,7 +56,25 @@ app.post('/webhook', async (req, res) => {
             "source": "",
         }
     }
-
+    else if (resposta.tipo == 'card'){
+        responder = {
+            "fulfillmentText": "Resposta do webhook",
+            "fulfillmentMessages":[
+                {
+                    "card": {
+                        "title": "card title",
+                        "subtitle": "card text",
+                        "imageUri": "reposta.url",
+                        "buttons": [
+                          {
+                            "text": "button text",
+                            "postback": "https://example.com/path/for/end-user/to/follow"
+                }
+            ],
+            "source": "",
+        }
+    }
+    
 
 
     res.send(responder)
