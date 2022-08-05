@@ -64,7 +64,7 @@ app.post('/webhook', async (req, res) => {
                     "card":{
                         "title": "Barata",
                         "subtitle": "Barata?",
-                        "ImageUri": reposta.url,
+                        "imageUri": reposta.url,
                         "buttons": [
                             {
                                 "Text": "Barata!!!!",
