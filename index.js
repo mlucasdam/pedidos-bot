@@ -61,14 +61,17 @@ app.post('/webhook', async (req, res) => {
             "fulfillmentText": "Resposta do webhook",
             "fulfillmentMessages":[
                 {
-                    "card": {
-                        "title": "card title",
-                        "subtitle": "card text",
-                        "imageUri": "reposta.url",
+                    "card":{
+                        "title": "Barata",
+                        "subtitle": "Barata?",
+                        "ImageUri": reposta.url,
                         "buttons": [
-                          {
-                            "text": "button text",
-                            "postback": "https://example.com/path/for/end-user/to/follow"
+                            {
+                                "Text": "Barata!!!!",
+                                "postback": "google.com"
+                            }
+                        ]
+                    }
                 }
             ],
             "source": "",
