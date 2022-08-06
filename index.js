@@ -27,6 +27,21 @@ app.post('/webhook', async (req, res) => {
         default:
             resposta = {tipo: 'texto', mensagem: "sinto muito, não entendi o que quer dizer."}
     } 
+
+    let meuCarpadio = [];
+    let menuItem = {};
+
+    for (let i = 0; i<resposta.cardapio.length; i++){
+        menuItem = {
+            "card":{
+                "title": resposta.cardapio[i].titulo,
+                "subtitle": resposta.cardapio[i].preco,
+                "imageUri": resposta.cardapio[i].url,
+                }
+            }
+
+        meuCarpadio.push(menuItem)
+    }
     
     if (resposta.tipo == 'texto'){
         responder = {
@@ -43,6 +58,7 @@ app.post('/webhook', async (req, res) => {
             "source": "",  
         }
     }
+
     else if (resposta.tipo == 'imagem'){
         responder = {
             "fulfillmentText": "Resposta do webhook",
@@ -59,15 +75,8 @@ app.post('/webhook', async (req, res) => {
     else if (resposta.tipo == 'card'){
         responder = {
             "fulfillmentText": "Resposta do webhook",
-            "fulfillmentMessages":[
-                {
-                    "card":{
-                        "title": resposta.titulo,
-                        "subtitle": resposta.preco,
-                        "imageUri": resposta.url,
-                    }
-                }
-            ],
+            "fulfillmentMessages": meuCarpadio,
+            
             "source": "",
         }
     }
