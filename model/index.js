@@ -2,19 +2,33 @@ const axios = require ("axios");
 
 exports.VerCardapio = async (msg, params) => {
     let url = 'https://sheetdb.io/api/v1/brosov14uxs2x';
+    let cardapio = [];
     let produto = {};
-
+    let retorno = {}
+    
     return await axios
             .get (url)
             .then ((resultado) => {
-                console.log (resultado.data[0]);
-                produto = resultado.data[0];
+                retorno = resultado.data;
                 
+                for (let i = 0; i<retorno.length; i++ ){
+                    console.log("cada elemento: ", retorno[i]);
+                    
+                    produto = {
+                        tipo: 'card',
+                        titulo: `cod: ${retorno[i].codigo} - ${retorno[i].nome}`,
+                        preco: `R$ ${retorno[i].preco},00`,
+                        url: retorno[i].Imagem
+                    }
+                    
+                    cardapio.push(produto)
+
+                }
+
+
                 let resposta = {
                     tipo: 'card',
-                    titulo: `cod: ${produto.codigo} - ${produto.nome}`,
-                    preco: `R$ ${produto.preco},00`,
-                    url: produto.Imagem
+                    cardapio
                 }
                 return resposta
             })
